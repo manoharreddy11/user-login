@@ -1,4 +1,0 @@
-#Sun Mar 24 16:45:10 IST 2024
-base.0=C\:\\flutter_windows_3.19.1-stable\\horizontal_list_view\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
