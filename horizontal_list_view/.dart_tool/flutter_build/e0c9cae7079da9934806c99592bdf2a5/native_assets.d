@@ -1,0 +1,1 @@
+ C:\\flutter_windows_3.19.1-stable\\horizontal_list_view\\.dart_tool\\flutter_build\\e0c9cae7079da9934806c99592bdf2a5\\native_assets.yaml: 
