@@ -48,8 +48,7 @@ class RegistrationPage extends StatelessWidget {
             SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
-                // Handle registration logic here
-                // For simplicity, just navigate to a success page
+                
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => SuccessPage()),
