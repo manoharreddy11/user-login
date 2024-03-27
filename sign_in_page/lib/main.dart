@@ -45,8 +45,7 @@ class SignInPage extends StatelessWidget {
             SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
-                // Handle sign-in logic here
-                // For simplicity, just navigate to a home page
+                
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => HomePage()),
