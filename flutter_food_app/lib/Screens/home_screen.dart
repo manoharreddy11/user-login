@@ -6,7 +6,20 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Food App'),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Hand Toss Pizza Expert',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              'Pizzas, Indian',
+              style: TextStyle(fontSize: 14),
+            ),
+          ],
+        ),
+        backgroundColor: Colors.blue[400],
       ),
       body: FoodList(),
     );

@@ -3,78 +3,168 @@ import 'package:flutter_food_app/screens/item_details.dart';
 
 class FoodList extends StatelessWidget {
   final List<Map<String, dynamic>> foodItems = [
-    {'name': 'Pizza', 'price': 10.99, 'image': 'assets/images/pizza.jpg'},
-    {'name': 'Burger', 'price': 8.99, 'image': 'assets/images/hamburger.jpg'},
-    {'name': 'Sandwich', 'price': 12.99, 'image': 'assets/images/pizza.jpg'},
-    {'name': 'Pasta', 'price': 6.99, 'image': 'assets/images/hamburger.jpg'},
-    {'name': 'Salad', 'price': 15.99, 'image': 'assets/images/pizza.jpg'},
+    {
+      'name': 'Pizza',
+      'price': 10.99,
+      'image': 'assets/images/pizza.jpg',
+      'restaurant': {'name': 'Pizza Palace', 'address': '123 Main St, Hyd'}
+    },
+    {
+      'name': 'Burger',
+      'price': 8.99,
+      'image': 'assets/images/hamburger.jpg',
+      'restaurant': {'name': 'Dominos', 'address': 'Jntu Main St, Hyd'}
+    },
+    {
+      'name': 'Sandwich',
+      'price': 12.99,
+      'image': 'assets/images/pizza.jpg',
+      'restaurant': {
+        'name': 'Mc Donald s',
+        'address': '201,Miyapur Main St, Hyd'
+      }
+    },
+    {
+      'name': 'Pasta',
+      'price': 6.99,
+      'image': 'assets/images/hamburger.jpg',
+      'restaurant': {
+        'name': 'La Pinoz Pizza',
+        'address': 'Gachibowli main st, Hyd'
+      }
+    },
+    {
+      'name': 'Salad',
+      'price': 15.99,
+      'image': 'assets/images/pizza.jpg',
+      'restaurant': {'name': 'Subway', 'address': 'Dilsukhnagar Main St, Hyd'}
+    },
     {
       'name': 'Sicilian',
       'price': 15.99,
-      'image': 'assets/images/hamburger.jpg'
+      'image': 'assets/images/hamburger.jpg',
+      'restaurant': {'name': 'Pista House', 'address': 'Kondapur Main St, Hyd'}
     },
-    {'name': 'Pepperoni', 'price': 15.99, 'image': 'assets/images/pizza.jpg'},
+    {
+      'name': 'Pepperoni',
+      'price': 15.99,
+      'image': 'assets/images/pizza.jpg',
+      'restaurant': {'name': 'Mehfil', 'address': 'Nizampet Main St, Hyd'}
+    },
     {
       'name': 'Frenchfries',
       'price': 23.99,
-      'image': 'assets/images/hamburger.jpg'
+      'image': 'assets/images/hamburger.jpg',
+      'restaurant': {'name': 'KS Bakers', 'address': 'Kukatpally Main St, Hyd'}
     },
-    {'name': 'KFC', 'price': 16.99, 'image': 'assets/images/pizza.jpg'},
+    {
+      'name': 'KFC',
+      'price': 16.99,
+      'image': 'assets/images/pizza.jpg',
+      'restaurant': {'name': 'Pizza Hut', 'address': 'Moosapet Main St, Hyd'}
+    },
     {
       'name': 'Pastries',
       'price': 45.99,
-      'image': 'assets/images/hamburger.jpg'
+      'image': 'assets/images/hamburger.jpg',
+      'restaurant': {'name': 'Tipsy Topsy', 'address': 'Ameerpet Main St, Hyd'}
     },
-    {'name': 'Muffins', 'price': 40.99, 'image': 'assets/images/pizza.jpg'},
-    // Add more items as needed
+    {
+      'name': 'Muffins',
+      'price': 40.99,
+      'image': 'assets/images/pizza.jpg',
+      'restaurant': {
+        'name': 'Nosh Bistro',
+        'address': 'Hitec City Main St, Hyd'
+      }
+    },
+    // Your list of food items
+    // ...
   ];
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: foodItems.length,
       itemBuilder: (context, index) {
         final item = foodItems[index];
-        return ListTile(
-          contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          leading: Image.asset(
-            item['image'],
-            width: 75, // Adjust image width
-            height: 75, // Adjust image height
-            fit: BoxFit.cover,
-          ),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        final String itemName = item['name'];
+        final double itemPrice = item['price'];
+        final String itemImage = item['image'];
+        final String restaurantName = item['restaurant']['name'];
+        final String restaurantAddress = item['restaurant']['address'];
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+          child: Row(
             children: [
-              Text(
-                item['name'],
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 10,
+              Container(
+                width: 160, // Width of the image container
+                height: 200, // Increased height for the image
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                    image: AssetImage(itemImage),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-              Text(
-                '\$${item['price'].toStringAsFixed(2)}',
-                style: TextStyle(
-                  fontSize: 10,
+              SizedBox(width: 16), // Space between image and item details
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      itemName,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      '\$${itemPrice.toStringAsFixed(2)}',
+                      style: TextStyle(
+                        fontSize: 12,
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      'Restaurant: $restaurantName',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    Text(
+                      'Address: $restaurantAddress',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    SizedBox(height: 8),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Itemdetails(
+                              item: itemName,
+                              price: itemPrice,
+                              imagePath: itemImage,
+                              restaurantName: restaurantName,
+                              restaurantAddress: restaurantAddress,
+                            ),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                      ),
+                      child: Text(
+                        'Add to Cart',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
-          ),
-          trailing: ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => Itemdetails(
-                    item: item['name'],
-                    price: item['price'],
-                    imagePath: item['image'],
-                  ),
-                ),
-              );
-            },
-            child: Text('Add to Cart'),
           ),
         );
       },

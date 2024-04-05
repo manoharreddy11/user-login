@@ -56,17 +56,6 @@ class _cartPageState extends State<cartPage> {
                                 'Search button pressed'); // Example: Print a message when pressed
                           },
                         ),
-                        IconButton(
-                          icon: Icon(
-                            Icons.search,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            // Add your logic for the search button here
-                            print(
-                                'Search button pressed'); // Example: Print a message when pressed
-                          },
-                        ),
                       ],
                     ),
                     SizedBox(
