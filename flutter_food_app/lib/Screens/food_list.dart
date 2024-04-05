@@ -66,7 +66,7 @@ class FoodList extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ItemDetails(
+                  builder: (context) => Itemdetails(
                     item: item['name'],
                     price: item['price'],
                     imagePath: item['image'],
