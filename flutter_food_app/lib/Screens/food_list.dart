@@ -9,6 +9,12 @@ class FoodList extends StatelessWidget {
     {'name': 'Pasta', 'price': 6.99, 'image': 'assets/images/hamburger.jpg'},
     {'name': 'Salad', 'price': 15.99, 'image': 'assets/images/pizza.jpg'},
     {
+      'name': 'Sicilian',
+      'price': 15.99,
+      'image': 'assets/images/hamburger.jpg'
+    },
+    {'name': 'Pepperoni', 'price': 15.99, 'image': 'assets/images/pizza.jpg'},
+    {
       'name': 'Frenchfries',
       'price': 23.99,
       'image': 'assets/images/hamburger.jpg'
@@ -33,8 +39,8 @@ class FoodList extends StatelessWidget {
           contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
           leading: Image.asset(
             item['image'],
-            width: 100, // Adjust image width
-            height: 100, // Adjust image height
+            width: 75, // Adjust image width
+            height: 75, // Adjust image height
             fit: BoxFit.cover,
           ),
           title: Row(
@@ -44,13 +50,13 @@ class FoodList extends StatelessWidget {
                 item['name'],
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  fontSize: 10,
                 ),
               ),
               Text(
                 '\$${item['price'].toStringAsFixed(2)}',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 10,
                 ),
               ),
             ],

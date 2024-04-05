@@ -17,36 +17,41 @@ class ItemDetails extends StatelessWidget {
       appBar: AppBar(
         title: Text('Item Details'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              imagePath,
-              height: 200,
-              width: 200,
-              fit: BoxFit.cover,
-            ),
-            SizedBox(height: 20),
-            Text(
-              item,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: 100,
+                width: 100,
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            Text(
-              '\$${price.toStringAsFixed(2)}',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/cart');
-              },
-              child: Text('Add to Cart'),
-            ),
-          ],
+              SizedBox(height: 10),
+              Text(
+                item,
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                '\$${price.toStringAsFixed(2)}',
+                style: TextStyle(fontSize: 10),
+              ),
+              SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/cart');
+                },
+                child: Text('Add to Cart'),
+              ),
+              SizedBox(height: 5), // Add some space at the bottom
+            ],
+          ),
         ),
       ),
     );
