@@ -83,94 +83,91 @@ class FoodList extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue[100], // Background color for the list
-      child: ListView.builder(
-        itemCount: foodItems.length,
-        itemBuilder: (context, index) {
-          final item = foodItems[index];
-          final String itemName = item['name'];
-          final double itemPrice = item['price'];
-          final String itemImage = item['image'];
-          final String restaurantName = item['restaurant']['name'];
-          final String restaurantAddress = item['restaurant']['address'];
+    return ListView.builder(
+      itemCount: foodItems.length,
+      itemBuilder: (context, index) {
+        final item = foodItems[index];
+        final String itemName = item['name'];
+        final double itemPrice = item['price'];
+        final String itemImage = item['image'];
+        final String restaurantName = item['restaurant']['name'];
+        final String restaurantAddress = item['restaurant']['address'];
 
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-            child: Row(
-              children: [
-                Container(
-                  width: 160, // Width of the image container
-                  height: 200, // Increased height for the image
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: AssetImage(itemImage),
-                      fit: BoxFit.cover,
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 16.0),
+          child: Row(
+            children: [
+              Container(
+                width: 160, // Width of the image container
+                height: 200, // Increased height for the image
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                    image: AssetImage(itemImage),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              SizedBox(width: 16), // Space between image and item details
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      itemName,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
                     ),
-                  ),
-                ),
-                SizedBox(width: 16), // Space between image and item details
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        itemName,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
+                    SizedBox(height: 4),
+                    Text(
+                      '\$${itemPrice.toStringAsFixed(2)}',
+                      style: TextStyle(
+                        fontSize: 12,
                       ),
-                      SizedBox(height: 4),
-                      Text(
-                        '\$${itemPrice.toStringAsFixed(2)}',
-                        style: TextStyle(
-                          fontSize: 12,
-                        ),
-                      ),
-                      SizedBox(height: 4),
-                      Text(
-                        'Restaurant: $restaurantName',
-                        style: TextStyle(fontSize: 12),
-                      ),
-                      Text(
-                        'Address: $restaurantAddress',
-                        style: TextStyle(fontSize: 12),
-                      ),
-                      SizedBox(height: 8),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Itemdetails(
-                                item: itemName,
-                                price: itemPrice,
-                                imagePath: itemImage,
-                                restaurantName: restaurantName,
-                                restaurantAddress: restaurantAddress,
-                              ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      'Restaurant: $restaurantName',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    Text(
+                      'Address: $restaurantAddress',
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    SizedBox(height: 8),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Itemdetails(
+                              item: itemName,
+                              price: itemPrice,
+                              imagePath: itemImage,
+                              restaurantName: restaurantName,
+                              restaurantAddress: restaurantAddress,
                             ),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(
-                              vertical: 12, horizontal: 12),
-                        ),
-                        child: Text(
-                          'Add to Cart',
-                          style: TextStyle(fontSize: 12),
-                        ),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                       ),
-                    ],
-                  ),
+                      child: Text(
+                        'Add to Cart',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          );
-        },
-      ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
