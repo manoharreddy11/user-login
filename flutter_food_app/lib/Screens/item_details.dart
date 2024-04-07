@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_app/Screens/cart_page.dart';
 
-class Itemdetails extends StatelessWidget {
+class Itemdetails extends StatefulWidget {
   final String item;
   final double price;
   final String imagePath;
@@ -16,6 +16,13 @@ class Itemdetails extends StatelessWidget {
     required this.restaurantName,
     required this.restaurantAddress,
   }) : super(key: key);
+
+  @override
+  _ItemdetailsState createState() => _ItemdetailsState();
+}
+
+class _ItemdetailsState extends State<Itemdetails> {
+  int itemCount = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -38,36 +45,71 @@ class Itemdetails extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
                   child: Image.asset(
-                    imagePath,
+                    widget.imagePath,
                     height: 200,
                     fit: BoxFit.cover,
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        item,
+                        widget.item,
                         style: TextStyle(
                             fontSize: 24, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: 10),
                       Text(
-                        '\$${price.toStringAsFixed(2)}',
+                        '\$${widget.price.toStringAsFixed(2)}',
                         style: TextStyle(fontSize: 18),
                       ),
                       SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => CartPage()),
-                          ); // Navigate back to previous screen
-                        },
-                        child: Text('Add to Cart'),
-                      ),
+                      itemCount > 0
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  icon: Icon(Icons.remove),
+                                  onPressed: () {
+                                    setState(() {
+                                      itemCount--;
+                                    });
+                                  },
+                                ),
+                                Text('$itemCount'),
+                                IconButton(
+                                  icon: Icon(Icons.add),
+                                  onPressed: () {
+                                    setState(() {
+                                      itemCount++;
+                                    });
+                                  },
+                                ),
+                              ],
+                            )
+                          : ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  itemCount++;
+                                });
+                              },
+                              child: Text('Add to Cart'),
+                            ),
+                      SizedBox(height: 7),
+                      if (itemCount > 0)
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CartPage(),
+                              ),
+                            );
+                          },
+                          child: Text('View Cart'),
+                        ),
                     ],
                   ),
                 ),
