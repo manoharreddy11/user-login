@@ -77,7 +77,7 @@ class FoodList extends StatelessWidget {
         'name': 'Nosh Bistro',
         'address': 'Hitec City Main St, Hyd'
       }
-    },
+    }, // Your food items data here...
   ];
 
   final List<Map<String, dynamic>> recommendedItems = [
@@ -85,78 +85,79 @@ class FoodList extends StatelessWidget {
       'name': 'Pizza',
       'price': 10.99,
       'image': 'assets/images/pizza.jpg',
-      //'restaurant': {'name': 'Pizza Palace', 'address': '123 Main St, Hyd'}
+      'restaurant': {'name': 'Pizza Palace', 'address': '123 Main St, Hyd'}
     },
     {
       'name': 'Burger',
       'price': 8.99,
       'image': 'assets/images/hamburger.jpg',
-      //'restaurant': {'name': 'Dominos', 'address': 'Jntu Main St, Hyd'}
+      'restaurant': {'name': 'Dominos', 'address': 'Jntu Main St, Hyd'}
     },
     {
       'name': 'Sandwich',
       'price': 12.99,
       'image': 'assets/images/pizza.jpg',
-      //'restaurant': {
-      //'name': 'Mc Donald s',
-      //'address': '201,Miyapur Main St, Hyd'
-      //}
+      'restaurant': {
+        'name': 'Mc Donald s',
+        'address': '201,Miyapur Main St, Hyd'
+      }
     },
     {
       'name': 'Pasta',
       'price': 6.99,
       'image': 'assets/images/hamburger.jpg',
-      //'restaurant': {
-      //'name': 'La Pinoz Pizza',
-      //'address': 'Gachibowli main st, Hyd'
-      //}
+      'restaurant': {
+        'name': 'La Pinoz Pizza',
+        'address': 'Gachibowli main st, Hyd'
+      }
     },
     {
       'name': 'Salad',
       'price': 15.99,
       'image': 'assets/images/pizza.jpg',
-      //'restaurant': {'name': 'Subway', 'address': 'Dilsukhnagar Main St, Hyd'}
+      'restaurant': {'name': 'Subway', 'address': 'Dilsukhnagar Main St, Hyd'}
     },
     {
       'name': 'Sicilian',
       'price': 15.99,
       'image': 'assets/images/hamburger.jpg',
-      //'restaurant': {'name': 'Pista House', 'address': 'Kondapur Main St, Hyd'}
+      'restaurant': {'name': 'Pista House', 'address': 'Kondapur Main St, Hyd'}
     },
     {
       'name': 'Pepperoni',
       'price': 15.99,
       'image': 'assets/images/pizza.jpg',
-      //'restaurant': {'name': 'Mehfil', 'address': 'Nizampet Main St, Hyd'}
+      'restaurant': {'name': 'Mehfil', 'address': 'Nizampet Main St, Hyd'}
     },
     {
       'name': 'Frenchfries',
       'price': 23.99,
       'image': 'assets/images/hamburger.jpg',
-      //'restaurant': {'name': 'KS Bakers', 'address': 'Kukatpally Main St, Hyd'}
+      'restaurant': {'name': 'KS Bakers', 'address': 'Kukatpally Main St, Hyd'}
     },
     {
       'name': 'KFC',
       'price': 16.99,
       'image': 'assets/images/pizza.jpg',
-      //'restaurant': {'name': 'Pizza Hut', 'address': 'Moosapet Main St, Hyd'}
+      'restaurant': {'name': 'Pizza Hut', 'address': 'Moosapet Main St, Hyd'}
     },
     {
       'name': 'Pastries',
       'price': 45.99,
       'image': 'assets/images/hamburger.jpg',
-      //'restaurant': {'name': 'Tipsy Topsy', 'address': 'Ameerpet Main St, Hyd'}
+      'restaurant': {'name': 'Tipsy Topsy', 'address': 'Ameerpet Main St, Hyd'}
     },
     {
       'name': 'Muffins',
       'price': 40.99,
       'image': 'assets/images/pizza.jpg',
-      //'restaurant': {
-      //'name': 'Nosh Bistro',
-      //'address': 'Hitec City Main St, Hyd'
-      //}
+      'restaurant': {
+        'name': 'Nosh Bistro',
+        'address': 'Hitec City Main St, Hyd'
+      }
     },
   ];
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
