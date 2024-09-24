@@ -7,6 +7,7 @@ import 'package:flutter_food_app/screens/cart_page.dart';
 
 void main() {
   runApp(MyApp());
+  
 }
 
 class MyApp extends StatelessWidget {

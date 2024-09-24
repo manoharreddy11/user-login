@@ -10,8 +10,20 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   ScrollController _scrollController = ScrollController();
 
-  bool _isScrollingForward = true;
   bool _isTabVisible = false;
+  bool _isCategoryVisible = false;
+
+  List<String> categoriesList = [
+    'Explore categories',
+    'Cheese',
+    'Gift',
+    'Snacks',
+    'Butter',
+    'Dips',
+    'Honey',
+    'Condiments',
+    'Other',
+  ];
 
   @override
   void initState() {
@@ -20,15 +32,20 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _scrollListener() {
-    if (_scrollController.position.axisDirection == AxisDirection.down) {
+    if (_scrollController.position.pixels == 0) {
       setState(() {
-        _isScrollingForward = true;
+        _isCategoryVisible = false; // Hide category when at the top
+        _isTabVisible = true;
+      });
+    } else if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
+      setState(() {
+        _isCategoryVisible = true; // Show category when at the bottom
         _isTabVisible = true;
       });
     } else {
       setState(() {
-        _isScrollingForward = false;
-        _isTabVisible = false;
+        _isTabVisible = true;
       });
     }
   }
@@ -40,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
           NestedScrollView(
+            controller: _scrollController,
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) {
               return [
@@ -85,12 +103,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ];
             },
             body: CustomScrollView(
-              controller: _scrollController,
               slivers: [
                 SliverToBoxAdapter(
                   child: AnimatedContainer(
                     duration: Duration(milliseconds: 300),
-                    margin: EdgeInsets.only(top: _isScrollingForward ? 0 : 100),
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
                       child: Card(
@@ -157,27 +173,65 @@ class _HomeScreenState extends State<HomeScreen> {
           Positioned(
             top: 90,
             left: MediaQuery.of(context).size.width / 1.75 - 100,
-            child: _isTabVisible
-                ? Card(
-                    elevation: 4.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+            child: GestureDetector(
+              onTap: () {
+                _showCategoriesList(context);
+              },
+              child: AnimatedOpacity(
+                duration: Duration(milliseconds: 300),
+                opacity: _isCategoryVisible ? 1.0 : 0.0,
+                child: Card(
+                  elevation: 4.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0, vertical: 8.0),
+                    child: Row(
+                      children: [
+                        Text('Categories'),
+                        Icon(Icons.arrow_drop_down),
+                      ],
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0, vertical: 8.0),
-                      child: Row(
-                        children: [
-                          Text('Categories'),
-                          Icon(Icons.arrow_drop_down),
-                        ],
-                      ),
-                    ),
-                  )
-                : SizedBox(),
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),
+    );
+  }
+
+  void _showCategoriesList(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Categories'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: categoriesList
+                  .map(
+                    (category) => Column(
+                      children: [
+                        ListTile(
+                          title: Text(category),
+                          onTap: () {
+                            print('Selected Category: $category');
+                            Navigator.pop(context);
+                          },
+                        ),
+                        Divider(), // Add divider between list tiles
+                      ],
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
+        );
+      },
     );
   }
 }
