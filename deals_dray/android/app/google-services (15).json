@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "314208276904",
+    "project_id": "deals-dray",
+    "storage_bucket": "deals-dray.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314208276904:android:f94463fa114de4be250d9d",
+        "android_client_info": {
+          "package_name": "com.example.deals_dray"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7i41REVccTV54uGsTO5_etFFGwD7liXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

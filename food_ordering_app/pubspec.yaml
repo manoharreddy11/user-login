@@ -1,0 +1,53 @@
+name: food_ordering_app
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/CopyofSushiApp-xd.jpg
+    - assets/images/CopyofSushiApp-xd.psd
+    - assets/images/DS_Store
+    - assets/images/food1.png
+    - assets/images/food2.png
+    - assets/images/food3.png
+    - assets/images/hotel1.png
+    - assets/images/hotel2.png
+    - assets/images/hotel3.png
+    - assets/images/hotelBig.png
+    - assets/images/suchi2.png
+    - assets/images/sushi.png
+    - assets/images/sushi3.png
+    - assets/images/sushi4.png
+  fonts:
+    - family: mont
+      fonts:
+        - asset: assets/fonts/Montserrat-Medium.ttf
+
+        # Remember to adjust the indentation as necessary when copying this YAML code into your `pubspec.yaml` file.
+
+        #       - asset: fonts/Schyler-Italic.ttf
+       #         style: italic
+       #   - family: Trajan Pro
+       #     fonts:
+       #       - asset: fonts/TrajanPro.ttf
+       #       - asset: fonts/TrajanPro_Bold.ttf
+       #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
